@@ -1,0 +1,15 @@
+query Hero($episode: Episode, $withFriends: Boolean!) {
+    hero(episode: $episode) {
+        name
+        friends @include(if: $withFriends) {
+            name
+        }
+    }
+}
+
+# a directive can be attached to a field or fragment inclusion, and can affect execution of the query in any way the server
+# desires
+
+# @include(if: Boolean)
+# @skip(if: Boolean)
+

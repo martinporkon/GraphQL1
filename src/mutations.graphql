@@ -1,0 +1,15 @@
+mutation CreateReviewForEpisode($ep: Episode, $review: ReviewInput!) {
+    createReview(episode: $ep: review: $review) {
+        stars
+        commentary
+    }
+}
+
+# Just like in queries, if the mutation field returns an object type, you can ask for nested fields.
+# This can be useful for fetching the new state of an object after an update. 
+
+# While query fields are executed in parallel, mutation fields run in series, one after the other.
+
+
+# This means if we send two incrementCredits mutations in one request, the first is guaranteed to finish before the second
+# begins, ensuring that we don't end up with a race condition with ourselves.
