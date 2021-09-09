@@ -1,4 +1,16 @@
-type Query {
-    me: User
+type Query {## types
+    me: User## fields
 }
 
+type User {
+    id: ID
+    name: String
+}
+
+# example query
+
+{
+    me {
+        name
+    }
+}
