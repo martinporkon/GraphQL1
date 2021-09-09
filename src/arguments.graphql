@@ -1,0 +1,17 @@
+{
+    human(id: "1000") {
+        name
+        height
+    }
+}
+
+{
+    human(id: "1000") {
+        name
+        height(unit: FOOT)
+    }
+}
+
+# graphql can have several custom types, as long as they can be serialized into your transport format.
+
+

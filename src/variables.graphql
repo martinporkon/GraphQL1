@@ -1,0 +1,11 @@
+query HeroNameAndFriends($episode: Episode) {
+    hero(episode: $episode) {
+        name
+        friends {
+            name
+        }
+    }
+}
+
+#This is also in general a good practice for denoting which arguments in our query are expected to be dynamic -
+#we should never be doing string interpolation to construct queries from user-supplied values.

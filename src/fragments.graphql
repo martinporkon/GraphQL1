@@ -1,0 +1,54 @@
+# reusable units called fragments. Fragments let you construct sets of fields, and then include themin queries.
+
+{
+    leftComparison: hero(episode: EMPIRE) {
+        ...comparisonFields
+    }
+    rightComparison: hero(episode: JEDI) {
+        ...comparisonFields
+    }
+}
+
+fragment comparisonFields on Character {
+    name
+    appearsIn
+    friends {
+        name
+    }
+}
+
+
+
+# using variables inside fragments
+
+query HeroComparsion($first: Int = 3) {
+    leftComparison: hero(episode: EMPIRE) {
+        ...comparisonFields2
+    }
+    rightComparison: hero(episode: JEDI) {
+        ...comparisonFields2
+    }
+
+}
+
+fragment comparisonFields2 on Character {
+    name
+    friendsConnection($first: $first)
+        totalCount
+        edges {
+            node {
+                name 
+            }
+        }
+    }
+}
+
+# query <- operation type, HeroNameAndFriends <- operation name
+
+# the operation type is either query, mutation, or subscription and describes what type of operation you're intenting to do.
+
+# multi-operation documents
+
+# operation name is encouraged because it is very helpful for debugging and server-side logging.
+
+# fragment names and mutation or query names can be a useful tool on the server side to identify different GraphQL requests.
