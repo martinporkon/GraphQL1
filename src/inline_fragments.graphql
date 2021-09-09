@@ -1,0 +1,22 @@
+# If you are querying a field that returns an interface or a union type, you will need to use inline fragments
+# to access data on the underlying concrete type.
+
+query HeroForEpisode($ep: Episode!) {
+    hero(episode: $ep) {
+        name
+        ... on Droid {
+            primaryFunction
+        }
+        ... on Human {
+            height
+        }
+    }
+}
+
+# here we will return a Droid or a Human from the server, depending on the Episode argument
+
+# inline fragments --> ... on Droid, ... on Human
+
+# the primarFunciton field will only be executed if the Character returned from hero is of the Droid type.
+
+# named fragments can also be used in the same way, since a named fragment always has a type attached.
