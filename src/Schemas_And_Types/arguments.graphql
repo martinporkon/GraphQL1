@@ -1,0 +1,14 @@
+# vastupidiselt Queries_And_Mutations kaustale ja nende query sisudele.
+
+
+type Starship {# every field on a GraphQL object type can have zero or more arguments
+    id: ID!
+    name: String!
+    length(unit: LengthUnit = METER): Float
+}
+
+# all arguments are named, all arguments in GraphQL are passed by name specifically. In this case, the length
+# field has one defined argument, unit
+
+# When an argument is optional, we can define a default value - if the unit argument is not passed, it will be set to METER by
+# default.

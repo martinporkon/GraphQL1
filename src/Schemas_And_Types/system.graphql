@@ -1,0 +1,25 @@
+{
+# this is a root object
+}
+
+# Every GraphQL service defines a set of types which completely describe the set of possible data you can query
+# against on that service. Then, when queries come in, they are validated and executed against that schema.
+
+
+type Character {
+    name: String!
+    appearsIn: [Episode!]!
+}
+
+# Character is a GraphQL Object Type, meaning it's a type with some fields.
+# Most of the types in your schema will be object types.
+
+# "name" and "appearsIn" are fields on the Character type.
+
+# String is one of the built-in scalar types.
+
+# String! means that the filed is non-nullable, meaning that the GraphQL service
+# promises to always give you a value when you query this field.
+
+# [Episode!]! represents an array of Episode objects. Since it is also non-nullable, you can always expect an array.
+# (with zero or more items)

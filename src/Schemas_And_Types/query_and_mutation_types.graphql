@@ -1,0 +1,24 @@
+schema {
+  query: Query
+  mutation: Mutation
+}
+
+# Every GraphQL service has a query type and may or not may have a mutation type.
+
+type Query {
+  hero(episode: Episode): Character
+  droid(id: ID!): Droid
+}
+
+#ID: The ID scalar type represents a unique identifier, 
+#often used to refetch an object or as the key for a cache. 
+#The ID type is serialized in the same way as a String; however, 
+#defining it as an ID signifies that it is not intended to be human‐readable.
+
+# We can also specift custom scalar types
+
+scalar Date
+
+# Then it is up to our implementation to define how that type should be serialized, deserialized and validated.
+# For example, you could specify that the Date type should always be serialized into an integer timestamp, and your client
+# should know to expect that format for any date fields.
